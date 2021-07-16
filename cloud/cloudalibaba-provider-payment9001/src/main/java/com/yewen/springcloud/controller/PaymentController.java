@@ -1,0 +1,23 @@
+package com.yewen.springcloud.controller;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * @author ShadowStart
+ * @create 2021-07-10 21:01
+ */
+@RestController
+public class PaymentController {
+
+    @Value("${server.port}")
+    public String serverPort;
+
+    @GetMapping(value = "/payment/nacos/{id}")
+    public String getPayment(@PathVariable("id") Integer id) {
+        return "nacos registry, server port:" + serverPort + "\tid:" + id;
+    }
+
+}
